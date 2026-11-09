@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f0e6">
+    <meta name="description" content="Conoce San Miguel Tecomatlán, municipio de la Mixteca de Oaxaca, México.">
+    <title>San Miguel Tecomatlán | Oaxaca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: light;
+            --paper: #f4f0e6;
+            --ink: #1c2925;
+            --muted: #66716a;
+            --green: #355d4c;
+            --green-dark: #244437;
+            --clay: #ba5237;
+            --yellow: #e8b94c;
+            --line: #d7d3c8;
+            --serif: "DM Serif Display", Georgia, serif;
+            --sans: "Manrope", "Trebuchet MS", sans-serif;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+        body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; }
+        a { color: inherit; }
+        a:focus-visible, button:focus-visible { outline: 3px solid var(--clay); outline-offset: 4px; }
+        .skip-link { position: absolute; z-index: 10; top: 12px; left: 12px; padding: 10px 14px; transform: translateY(-160%); background: var(--ink); color: white; }
+        .skip-link:focus { transform: translateY(0); }
+        .site-header { position: sticky; z-index: 5; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 76px; padding: 0 clamp(22px, 6vw, 96px); border-bottom: 1px solid var(--line); background: rgb(244 240 230 / 94%); backdrop-filter: blur(12px); }
+        .brand { display: flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+        .brand-mark { display: grid; width: 38px; aspect-ratio: 1; place-items: center; border-radius: 50%; background: var(--clay); color: white; font: 16px var(--serif); }
+        .brand-name { font-size: 12px; font-weight: 700; line-height: 1.2; }
+        .brand-name span { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; font-weight: 600; }
+        .header-right, .main-nav { display: flex; align-items: center; }
+        .header-right { gap: clamp(16px, 3vw, 38px); }
+        .main-nav { gap: clamp(14px, 2.2vw, 30px); }
+        .main-nav a { color: #48554e; font-size: 11px; font-weight: 700; text-decoration: none; }
+        .main-nav a:hover, .text-link:hover { color: var(--clay); }
+        .language-switch { display: flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 99px; }
+        .language-switch button { min-width: 36px; min-height: 31px; padding: 0 8px; border: 0; border-radius: 99px; background: transparent; color: var(--muted); cursor: pointer; font: 700 10px var(--sans); }
+        .language-switch button[aria-pressed="true"] { background: var(--green-dark); color: white; }
+        main { overflow: hidden; }
+        .hero { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(340px, .92fr); gap: clamp(42px, 8vw, 126px); align-items: center; min-height: 590px; padding: 76px clamp(22px, 9vw, 144px) 88px; background: radial-gradient(ellipse at 13% 83%, rgb(232 185 76 / 17%), transparent 30%), linear-gradient(115deg, #f4f0e6 0%, #f4f0e6 62%, #eee9dc 62%, #eee9dc 100%); }
+        .eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 18px; color: var(--clay); font-size: 10px; font-weight: 800; letter-spacing: 1.7px; text-transform: uppercase; }
+        .eyebrow::before { width: 24px; height: 2px; background: var(--clay); content: ""; }
+        h1, h2, p { margin-top: 0; }
+        h1 { max-width: 680px; margin-bottom: 24px; font: 400 clamp(58px, 7.5vw, 108px)/.96 var(--serif); letter-spacing: 0; }
+        h1 span { color: var(--green); }
+        .hero-copy { max-width: 490px; margin-bottom: 30px; color: #59655e; font-size: 15px; line-height: 1.85; }
+        .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
+        .button-link { display: inline-flex; min-height: 48px; align-items: center; gap: 13px; padding: 0 19px; background: var(--green-dark); color: white; font-size: 11px; font-weight: 800; text-decoration: none; transition: background .2s ease, transform .2s ease; }
+        .button-link:hover { transform: translateY(-2px); background: var(--clay); }
+        .button-link span { font-size: 16px; }
+        .text-link { color: var(--ink); font-size: 11px; font-weight: 800; text-decoration-thickness: 1px; text-underline-offset: 4px; }
+        .map-art { position: relative; min-height: 400px; padding: 13px; border: 1px solid rgb(28 41 37 / 12%); background: #d9ded4; box-shadow: 18px 18px 0 rgb(53 93 76 / 12%); }
+        .map-art::before { position: absolute; z-index: 1; top: -16px; right: 30px; width: 44px; height: 44px; border-radius: 50%; background: var(--yellow); content: ""; }
+        .map-graphic { position: relative; height: 374px; overflow: hidden; background-color: #d9ded4; background-image: repeating-radial-gradient(ellipse at 61% 46%, transparent 0 26px, rgb(53 93 76 / 19%) 27px 28px, transparent 29px 43px), linear-gradient(132deg, transparent 0 45%, rgb(186 82 55 / 23%) 45.2% 45.5%, transparent 45.7%), linear-gradient(34deg, transparent 0 64%, rgb(53 93 76 / 18%) 64.2% 64.5%, transparent 64.7%); }
+        .map-graphic::before, .map-graphic::after { position: absolute; background: rgb(53 93 76 / 16%); content: ""; }
+        .map-graphic::before { top: 0; bottom: 0; left: 54%; width: 1px; }
+        .map-graphic::after { top: 48%; right: 0; left: 0; height: 1px; }
+        .map-grid-label { position: absolute; top: 18px; left: 18px; color: #53655b; font-size: 9px; font-weight: 800; letter-spacing: 1.5px; }
+        .map-north { position: absolute; top: 16px; right: 18px; color: var(--green-dark); font-size: 10px; font-weight: 800; }
+        .map-north span { display: block; text-align: center; font-size: 15px; }
+        .location-mark { position: absolute; top: 48%; left: 54%; display: grid; width: 28px; aspect-ratio: 1; place-items: center; transform: translate(-50%, -50%); border: 2px solid white; border-radius: 50%; background: var(--clay); box-shadow: 0 0 0 8px rgb(186 82 55 / 17%); }
+        .location-mark::after { width: 6px; aspect-ratio: 1; border-radius: 50%; background: white; content: ""; }
+        .map-caption { position: absolute; right: 13px; bottom: 13px; left: 13px; display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 13px 16px; background: var(--green-dark); color: white; font-size: 10px; font-weight: 700; }
+        .map-caption a { color: #f1c45a; text-underline-offset: 3px; }
+        .facts { display: grid; grid-template-columns: repeat(3, 1fr); padding: 0 clamp(22px, 9vw, 144px); background: var(--green-dark); color: white; }
+        .fact { min-height: 122px; padding: 26px 28px; border-right: 1px solid rgb(255 255 255 / 19%); }
+        .fact:first-child { border-left: 1px solid rgb(255 255 255 / 19%); }
+        .fact-label { display: block; margin-bottom: 7px; color: #b8c8bb; font-size: 9px; font-weight: 800; letter-spacing: 1.4px; text-transform: uppercase; }
+        .fact strong { font: 22px var(--serif); }
+        .intro { display: grid; grid-template-columns: .82fr 1.18fr; gap: clamp(36px, 9vw, 150px); padding: 114px clamp(22px, 13vw, 208px) 122px; }
+        .section-index { display: block; margin-bottom: 18px; color: var(--clay); font-size: 10px; font-weight: 800; letter-spacing: 1.6px; }
+        h2 { margin-bottom: 18px; font: 400 clamp(36px, 4.2vw, 58px)/1.08 var(--serif); letter-spacing: 0; }
+        .intro-copy { max-width: 620px; padding-top: 35px; color: #526058; font-size: 15px; line-height: 1.95; }
+        .intro-copy p:last-child { margin-bottom: 0; }
+        .place-strip { display: grid; grid-template-columns: .8fr 1.2fr; align-items: center; gap: 44px; padding: 76px clamp(22px, 13vw, 208px); background: #e9e4d8; }
+        .place-strip h2 { max-width: 410px; margin-bottom: 0; }
+        .photo-gallery { min-width: 0; }
+        .gallery-stage { position: relative; overflow: hidden; aspect-ratio: 4 / 3; background: var(--green-dark); }
+        .gallery-slide { position: absolute; inset: 0; display: block; color: white; text-decoration: none; }
+        .gallery-slide[hidden], .gallery-empty[hidden] { display: none; }
+        .gallery-slide img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        .gallery-slide::after { position: absolute; inset: 38% 0 0; background: linear-gradient(transparent, rgb(18 31 25 / 82%)); content: ""; pointer-events: none; }
+        .gallery-caption { position: absolute; z-index: 1; right: 22px; bottom: 19px; left: 22px; display: flex; align-items: end; justify-content: space-between; gap: 18px; }
+        .gallery-caption strong { max-width: 75%; font: 24px/1.15 var(--serif); }
+        .gallery-caption span { flex: 0 0 auto; font-size: 10px; font-weight: 800; }
+        .gallery-empty { position: absolute; inset: 0; display: grid; align-content: end; padding: 26px; background: repeating-linear-gradient(145deg, transparent 0 34px, rgb(255 255 255 / 5%) 35px 36px), var(--green-dark); color: white; }
+        .gallery-empty span { margin-bottom: 10px; color: #f1c45a; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; }
+        .gallery-empty p { max-width: 340px; margin: 0; font: 25px/1.2 var(--serif); }
+        .gallery-controls { display: flex; min-height: 54px; align-items: center; justify-content: space-between; gap: 16px; padding: 0 14px; background: white; }
+        .gallery-controls[hidden] { display: none; }
+        .gallery-buttons, .gallery-dots { display: flex; align-items: center; gap: 7px; }
+        .gallery-controls button { display: grid; width: 34px; aspect-ratio: 1; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--green-dark); cursor: pointer; font: 16px var(--sans); }
+        .gallery-controls button:hover { border-color: var(--green-dark); background: var(--green-dark); color: white; }
+        .gallery-dots button { width: 9px; border: 0; background: #c8cec8; }
+        .gallery-dots button[aria-current="true"] { width: 22px; border-radius: 99px; background: var(--clay); }
+        .gallery-count { min-width: 45px; color: var(--muted); font-size: 10px; font-weight: 800; text-align: right; }
+        .gallery-progress { height: 3px; transform: scaleX(0); transform-origin: left; background: var(--yellow); }
+        .gallery-progress.is-running { animation: gallery-progress 6s linear; }
+        @keyframes gallery-progress { to { transform: scaleX(1); } }
+        .site-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 25px clamp(22px, 6vw, 96px); background: var(--ink); color: #d9ded4; font-size: 10px; }
+        .site-footer p { margin: 0; }
+        .site-footer a { color: #f1c45a; text-underline-offset: 3px; }
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: minmax(0, 1fr) minmax(280px, .85fr); gap: 40px; padding-right: 6vw; padding-left: 6vw; }
+            .map-art { min-height: 350px; }
+            .map-graphic { height: 324px; }
+            .intro, .place-strip { padding-right: 8vw; padding-left: 8vw; }
+        }
+        @media (max-width: 680px) {
+            html { scroll-padding-top: 72px; }
+            .site-header { min-height: 66px; padding: 0 18px; }
+            .header-right { gap: 12px; }
+            .main-nav { display: none; }
+            .hero { grid-template-columns: 1fr; gap: 48px; padding: 64px 22px 52px; background: radial-gradient(ellipse at 10% 31%, rgb(232 185 76 / 16%), transparent 34%), var(--paper); }
+            h1 { max-width: 510px; font-size: clamp(58px, 15vw, 82px); }
+            .hero-copy { font-size: 14px; }
+            .map-art { min-height: 310px; margin-right: 9px; }
+            .map-graphic { height: 284px; }
+            .map-caption { align-items: flex-start; flex-direction: column; gap: 4px; }
+            .facts { grid-template-columns: 1fr; padding: 8px 22px; }
+            .fact { display: flex; min-height: 76px; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 4px; border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 19%); }
+            .fact:first-child { border-left: 0; }
+            .fact:last-child { border-bottom: 0; }
+            .fact-label { margin: 0; }
+            .fact strong { text-align: right; font-size: 20px; }
+            .intro { grid-template-columns: 1fr; gap: 4px; padding: 76px 24px 82px; }
+            .intro-copy { padding-top: 0; font-size: 14px; }
+            .place-strip { grid-template-columns: 1fr; gap: 30px; padding: 64px 24px; }
+            .site-footer { align-items: flex-start; flex-direction: column; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+        }
+    </style>
+</head>
+<body>
+    <a class="skip-link" href="#contenido" data-es="Saltar al contenido" data-en="Skip to content">Saltar al contenido</a>
+    <header class="site-header">
+        <a class="brand" href="#inicio" aria-label="San Miguel Tecomatlán, Oaxaca">
+            <span class="brand-mark" aria-hidden="true">SM</span>
+            <span class="brand-name">SAN MIGUEL TECOMATLÁN<span>OAXACA · MÉXICO</span></span>
+        </a>
+        <div class="header-right">
+            <nav class="main-nav" aria-label="Navegación principal">
+                <a href="#lugar" data-es="El lugar" data-en="The place">El lugar</a>
+                <a href="#ubicacion" data-es="Ubicación" data-en="Location">Ubicación</a>
+                <a href="#fuentes" data-es="Conocenos" data-en="Get to know us">Conocenos</a>
+            </nav>
+            <div class="language-switch" role="group" aria-label="Idioma / Language">
+                <button type="button" lang="es" aria-pressed="true" data-language="es">ES</button>
+                <button type="button" lang="en" aria-pressed="false" data-language="en">EN</button>
+            </div>
+        </div>
+    </header>
+    <main id="contenido">
+        <section class="hero" id="inicio" aria-labelledby="page-title">
+            <div class="hero-text">
+                <p class="eyebrow" data-es="Mixteca · Oaxaca" data-en="Mixteca · Oaxaca">Mixteca · Oaxaca</p>
+                <h1 id="page-title"><span>San Miguel</span><br>Tecomatlán</h1>
+                <p class="hero-copy" data-es="Un municipio de la región Mixteca de Oaxaca, México. Un lugar con identidad propia, arraigado en el territorio y la vida de su comunidad." data-en="A municipality in Oaxaca's Mixteca region, Mexico. A place with its own identity, rooted in its landscape and community life.">Un municipio de la región Mixteca de Oaxaca, México. Un lugar con identidad propia, arraigado en el territorio y la vida de su comunidad.</p>
+                <div class="hero-actions">
+                    <a class="button-link" href="#fuentes"><span data-es="Conoce el municipio" data-en="Explore the town">Conoce el municipio</span><span aria-hidden="true">↘</span></a>
+                </div>
+            </div>
+            <div class="map-art" id="ubicacion">
+                <div class="map-graphic" role="img" aria-label="Referencia de ubicación en la región Mixteca de Oaxaca" data-aria-label-es="Referencia de ubicación en la región Mixteca de Oaxaca" data-aria-label-en="Location reference in Oaxaca's Mixteca region">
+                    <span class="map-grid-label" data-es="MIXTECA · OAXACA" data-en="MIXTECA · OAXACA">MIXTECA · OAXACA</span>
+                    <span class="map-north" aria-hidden="true">N<span>↑</span></span>
+                    <span class="location-mark" aria-hidden="true"></span>
+                </div>
+                <div class="map-caption">
+                    <span>17.3931° N · 97.2681° W</span>
+                    <a href="https://www.openstreetmap.org/?mlat=17.393056&amp;mlon=-97.268056#map=14/17.393056/-97.268056" target="_blank" rel="noopener noreferrer" data-es="Abrir mapa ↗" data-en="Open map ↗">Abrir mapa ↗</a>
+                </div>
+            </div>
+        </section>
+        <section class="facts" aria-label="Datos de ubicación">
+            <div class="fact"><span class="fact-label" data-es="Estado" data-en="State">Estado</span><strong data-es="Oaxaca" data-en="Oaxaca">Oaxaca</strong></div>
+            <div class="fact"><span class="fact-label" data-es="Región" data-en="Region">Región</span><strong data-es="Mixteca" data-en="Mixteca">Mixteca</strong></div>
+            <div class="fact"><span class="fact-label" data-es="Distrito" data-en="District">Distrito</span><strong data-es="Nochixtlán" data-en="Nochixtlán">Nochixtlán</strong></div>
+        </section>
+        <section class="intro" id="lugar" aria-labelledby="place-title">
+            <div>
+                <span class="section-index" data-es="01 / EL LUGAR" data-en="01 / THE PLACE">01 / EL LUGAR</span>
+                <h2 id="place-title" data-es="Una comunidad en la Mixteca" data-en="A community in the Mixteca">Una comunidad en la Mixteca</h2>
+            </div>
+            <div class="intro-copy">
+                <p data-es="San Miguel Tecomatlán es un municipio del estado de Oaxaca. Forma parte del distrito de Nochixtlán, dentro de la región Mixteca. Su cabecera municipal lleva el mismo nombre." data-en="San Miguel Tecomatlán is a municipality in the state of Oaxaca. It belongs to the Nochixtlán district, within the Mixteca region. The municipal seat shares its name.">San Miguel Tecomatlán es un municipio del estado de Oaxaca. Forma parte del distrito de Nochixtlán, dentro de la región Mixteca. Su cabecera municipal lleva el mismo nombre.</p>
+                <p data-es="Conoce los lugares que componen a este mágico pueblo así como su ubicación" data-en="Discover the places that make up this Magical Town, as well as its location.">Conoce los lugares que componen a este mágico pueblo así como su ubicación.</p>
+            </div>
+        </section>
+        <section class="place-strip" id="fuentes" aria-labelledby="sources-title">
+            <div>
+                <span class="section-index" data-es="02 / PARA EXPLORAR" data-en="02 / EXPLORE">02 / PARA EXPLORAR</span>
+                <h2 id="sources-title" data-es="Consulta el territorio" data-en="Explore the area">Consulta el territorio</h2>
+            </div>
+            <div class="photo-gallery" role="region" aria-roledescription="carrusel" aria-label="Galería fotográfica" data-label-es="Galería fotográfica" data-label-en="Photo gallery">
+                <div class="gallery-stage" aria-live="off">
+                    <div class="gallery-empty" id="gallery-empty">
+                        <span data-es="SAN MIGUEL TECOMATLÁN" data-en="SAN MIGUEL TECOMATLÁN">SAN MIGUEL TECOMATLÁN</span>
+                        <p data-es="Las fotografías y sus historias aparecerán aquí." data-en="Photographs and their stories will appear here.">Las fotografías y sus historias aparecerán aquí.</p>
+                    </div>
+                    <a class="gallery-slide" id="gallery-slide" hidden>
+                        <img id="gallery-image" src="" alt="">
+                        <span class="gallery-caption"><strong id="gallery-title"></strong><span data-es="VER HISTORIA ↗" data-en="READ THE STORY ↗">VER HISTORIA ↗</span></span>
+                    </a>
+                </div>
+                <div class="gallery-controls" id="gallery-controls" hidden>
+                    <div class="gallery-buttons">
+                        <button type="button" id="gallery-previous" aria-label="Fotografía anterior" data-label-es="Fotografía anterior" data-label-en="Previous photo" title="Fotografía anterior">‹</button>
+                        <button type="button" id="gallery-next" aria-label="Fotografía siguiente" data-label-es="Fotografía siguiente" data-label-en="Next photo" title="Fotografía siguiente">›</button>
+                    </div>
+                    <div class="gallery-dots" id="gallery-dots" aria-label="Elegir fotografía" data-label-es="Elegir fotografía" data-label-en="Choose photo"></div>
+                    <span class="gallery-count" id="gallery-count"></span>
+                </div>
+                <div class="gallery-progress" id="gallery-progress" aria-hidden="true"></div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <p>San Miguel Tecomatlán · Oaxaca, México</p>
+        <p data-es="Mapa © colaboradores de OpenStreetMap · Datos geográficos: INEGI" data-en="Map © OpenStreetMap contributors · Geographic data: INEGI">Mapa © colaboradores de OpenStreetMap · Datos geográficos: INEGI</p>
+    </footer>
+    <script>
+        const languageButtons = document.querySelectorAll("[data-language]");
+        const translatableElements = document.querySelectorAll("[data-es][data-en]");
+        const mapGraphic = document.querySelector(".map-graphic");
+        const galleryItems = [
+            {
+                src: "imagen/templo barda.jpeg",
+                altEs: "Barda del templo de San Miguel Tecomatlán",
+                altEn: "Wall surrounding the church in San Miguel Tecomatlán",
+                titleEs: "Iglesia de San Miguel Arcángel",
+                titleEn: "Church of San Miguel Arcángel",
+                href: "Templo-San-Miguel-Arcangel.html"
+            },
+            {
+                src: "imagen/nombre.jpeg",
+                altEs: "Letrero de bienvenida de San Miguel Tecomatlán",
+                altEn: "San Miguel Tecomatlán welcome sign",
+                titleEs: "Centro",
+                titleEn: "Center",
+                href: "Centro-San-Miguel-Tecomatlan.html"
+            },
+            {
+                src: "imagen/abinos 1.jpeg",
+                altEs: "Zona de cultivo de Abinos en San Miguel Tecomatlán",
+                altEn: "Abinos cultivation area in San Miguel Tecomatlán",
+                titleEs: "Zona de cultivo (Abinos)",
+                titleEn: "Cultivation area (Abinos)",
+                href: "Llano-San-Miguel-Tecomatlan.html"
+            },
+            {
+                src: "imagen/san isidro.jpeg",
+                altEs: "Capilla de San Isidro",
+                altEn: "San Isidro chapel",
+                titleEs: "San Isidro",
+                titleEn: "San Isidro",
+                href: "Capilla-San-Isidro.html"
+            }
+        ]; 
+        const galleryRegion = document.querySelector(".photo-gallery");
+        const galleryEmpty = document.querySelector("#gallery-empty");
+        const gallerySlide = document.querySelector("#gallery-slide");
+        const galleryImage = document.querySelector("#gallery-image");
+        const galleryTitle = document.querySelector("#gallery-title");
+        const galleryControls = document.querySelector("#gallery-controls");
+        const galleryDots = document.querySelector("#gallery-dots");
+        const galleryCount = document.querySelector("#gallery-count");
+        const galleryProgress = document.querySelector("#gallery-progress");
+        const galleryDelay = 6000;
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let currentLanguage = "es";
+        let activeGalleryIndex = 0;
+        let galleryTimer;
+
+        function renderGallerySlide() {
+            if (!galleryItems.length) return;
+            const item = galleryItems[activeGalleryIndex];
+            galleryImage.src = item.src;
+            galleryImage.alt = item[`alt${currentLanguage === "es" ? "Es" : "En"}`];
+            galleryTitle.textContent = item[`title${currentLanguage === "es" ? "Es" : "En"}`];
+            gallerySlide.href = `${item.href}?lang=${currentLanguage}`;
+            galleryCount.textContent = `${String(activeGalleryIndex + 1).padStart(2, "0")} / ${String(galleryItems.length).padStart(2, "0")}`;
+            galleryDots.querySelectorAll("button").forEach((dot, index) => {
+                dot.setAttribute("aria-current", String(index === activeGalleryIndex));
+            });
+        }
+
+        function stopGalleryTimer() {
+            window.clearInterval(galleryTimer);
+            galleryProgress.classList.remove("is-running");
+        }
+
+        function startGalleryTimer() {
+            stopGalleryTimer();
+            if (galleryItems.length < 2 || reducedMotion.matches || document.hidden) return;
+            galleryProgress.classList.add("is-running");
+            void galleryProgress.offsetWidth;
+            galleryTimer = window.setInterval(() => {
+                showGallerySlide(activeGalleryIndex + 1);
+            }, galleryDelay);
+        }
+
+        function showGallerySlide(index) {
+            activeGalleryIndex = (index + galleryItems.length) % galleryItems.length;
+            renderGallerySlide();
+            startGalleryTimer();
+        }
+
+        function initializeGallery() {
+            galleryRegion.setAttribute("aria-label", galleryRegion.dataset[`label${currentLanguage === "es" ? "Es" : "En"}`]);
+            if (!galleryItems.length) return;
+            galleryEmpty.hidden = true;
+            gallerySlide.hidden = false;
+            galleryControls.hidden = galleryItems.length < 2;
+            galleryProgress.hidden = galleryItems.length < 2;
+            galleryItems.forEach((item, index) => {
+                if (galleryItems.length < 2) return;
+                const dot = document.createElement("button");
+                dot.type = "button";
+                dot.setAttribute("aria-label", `${currentLanguage === "es" ? "Mostrar fotografía" : "Show photo"} ${index + 1}`);
+                dot.addEventListener("click", () => showGallerySlide(index));
+                galleryDots.append(dot);
+            });
+            document.querySelector("#gallery-previous").addEventListener("click", () => showGallerySlide(activeGalleryIndex - 1));
+            document.querySelector("#gallery-next").addEventListener("click", () => showGallerySlide(activeGalleryIndex + 1));
+            galleryRegion.addEventListener("mouseenter", stopGalleryTimer);
+            galleryRegion.addEventListener("mouseleave", startGalleryTimer);
+            galleryRegion.addEventListener("focusin", stopGalleryTimer);
+            galleryRegion.addEventListener("focusout", (event) => {
+                if (!galleryRegion.contains(event.relatedTarget)) startGalleryTimer();
+            });
+            document.addEventListener("visibilitychange", startGalleryTimer);
+            reducedMotion.addEventListener("change", startGalleryTimer);
+            renderGallerySlide();
+            startGalleryTimer();
+        }
+
+        function setLanguage(language) {
+            currentLanguage = language;
+            document.documentElement.lang = language;
+            document.title = language === "es"
+                ? "San Miguel Tecomatlán | Oaxaca"
+                : "San Miguel Tecomatlán | Oaxaca, Mexico";
+            translatableElements.forEach((element) => {
+                element.textContent = element.dataset[language];
+            });
+            languageButtons.forEach((button) => {
+                button.setAttribute("aria-pressed", String(button.dataset.language === language));
+            });
+            const labelKey = language === "es" ? "ariaLabelEs" : "ariaLabelEn";
+            mapGraphic.setAttribute("aria-label", mapGraphic.dataset[labelKey]);
+            galleryRegion.setAttribute("aria-label", galleryRegion.dataset[`label${language === "es" ? "Es" : "En"}`]);
+            galleryRegion.setAttribute("aria-roledescription", language === "es" ? "carrusel" : "carousel");
+            if (galleryItems.length) {
+                document.querySelector("#gallery-previous").setAttribute("aria-label", document.querySelector("#gallery-previous").dataset[`label${language === "es" ? "Es" : "En"}`]);
+                document.querySelector("#gallery-next").setAttribute("aria-label", document.querySelector("#gallery-next").dataset[`label${language === "es" ? "Es" : "En"}`]);
+                galleryDots.setAttribute("aria-label", galleryDots.dataset[`label${language === "es" ? "Es" : "En"}`]);
+                galleryDots.querySelectorAll("button").forEach((dot, index) => {
+                    dot.setAttribute("aria-label", `${language === "es" ? "Mostrar fotografía" : "Show photo"} ${index + 1}`);
+                });
+                renderGallerySlide();
+            }
+        }
+
+        languageButtons.forEach((button) => {
+            button.addEventListener("click", () => setLanguage(button.dataset.language));
+        });
+        initializeGallery();
+    </script>
+</body>
+</html>
