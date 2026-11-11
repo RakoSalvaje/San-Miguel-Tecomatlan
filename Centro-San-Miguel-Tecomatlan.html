@@ -13,61 +13,94 @@
         :root { color-scheme: light; --paper: #f4f0e6; --ink: #1c2925; --muted: #66716a; --green-dark: #244437; --clay: #ba5237; --line: #d7d3c8; --serif: "DM Serif Display", Georgia, serif; --sans: "Manrope", "Trebuchet MS", sans-serif; }
         * { box-sizing: border-box; }
         body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.6; }
-        .header { display: flex; min-height: 72px; align-items: center; justify-content: space-between; gap: 20px; padding: 12px clamp(20px, 6vw, 88px); border-bottom: 1px solid var(--line); }
+        .header { position: sticky; z-index: 2; top: 0; display: flex; min-height: 72px; align-items: center; justify-content: space-between; gap: 20px; padding: 12px clamp(20px, 6vw, 88px); border-bottom: 1px solid var(--line); background: rgb(244 240 230 / 95%); backdrop-filter: blur(12px); }
         .brand { color: var(--green-dark); font-size: 11px; font-weight: 800; text-decoration: none; }
         nav { display: flex; flex-wrap: wrap; gap: 22px; }
         nav a { color: #48554e; font-size: 11px; font-weight: 800; text-decoration: none; }
         nav a:hover { color: var(--clay); }
+        .language-switch { display: flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 99px; }
+        .language-switch button { min-width: 36px; min-height: 31px; padding: 0 8px; border: 0; border-radius: 99px; background: transparent; color: var(--muted); cursor: pointer; font: 700 10px var(--sans); }
+        .language-switch button[aria-pressed="true"] { background: var(--green-dark); color: white; }
         main { max-width: 1120px; margin: auto; padding: clamp(52px, 8vw, 100px) clamp(22px, 9vw, 136px); }
         .eyebrow { margin: 0 0 12px; color: var(--clay); font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
         h1 { margin: 0 0 28px; font: 400 clamp(42px, 7vw, 78px)/1.04 var(--serif); }
+        .intro-copy { max-width: 760px; margin: -5px 0 38px; color: #526058; font-size: 15px; line-height: 1.9; }
+        .intro-copy h2 { margin: 0 0 14px; color: var(--green-dark); font: 400 clamp(25px, 3vw, 34px)/1.2 var(--serif); }
+        .intro-copy p { margin: 0 0 14px; }
         section { padding: 30px 0 42px; scroll-margin-top: 24px; }
         h3 { margin: 0 0 18px; color: var(--green-dark); font: 400 clamp(30px, 4vw, 42px)/1.1 var(--serif); }
         .photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
         .map-photo { grid-column: 1 / -1; }
-        figure { margin: 0; background: #e9e4d8; }
-        img { display: block; width: 100%; max-height: 680px; aspect-ratio: 4 / 3; object-fit: cover; }
-        .map-photo img { aspect-ratio: auto; object-fit: contain; object-position: center; }
+        figure { overflow: hidden; margin: 0; background: #e9e4d8; }
+        img { display: block; width: 100%; max-height: 680px; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .45s ease; }
+        figure:hover img { transform: scale(1.025); }
+        .map-photo img { max-height: 520px; aspect-ratio: 16 / 10; object-fit: contain; object-position: center; background: #e9e4d8; }
         figcaption { padding: 12px 15px; color: var(--muted); font-size: 11px; font-weight: 700; }
         .footer { padding: 22px clamp(20px, 6vw, 88px); background: var(--ink); color: #d9ded4; font-size: 10px; }
         .footer a { color: #f1c45a; }
-        @media (max-width: 650px) { .header { align-items: flex-start; flex-direction: column; } nav { gap: 16px; } .photo-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 650px) { .header { align-items: flex-start; flex-direction: column; gap: 9px; } nav { gap: 16px; } .photo-grid { grid-template-columns: 1fr; } .intro-copy { font-size: 14px; } }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
     </style>
 </head>
 <body>
     <header class="header">
-        <a class="brand" href="Index.html">SAN MIGUEL TECOMATLÁN</a>
+        <a class="brand" href="index.html">SAN MIGUEL TECOMATLÁN</a>
         <nav aria-label="Secciones del centro">
-            <a href="#parque">Parque</a>
-            <a href="#municipio">Municipio</a>
-            <a href="#primaria">Primaria</a>
+            <a href="#parque" data-es="Parque" data-en="Park">Parque</a>
+            <a href="#municipio" data-es="Municipio" data-en="Municipal building">Municipio</a>
+            <a href="#primaria" data-es="Primaria" data-en="Elementary school">Primaria</a>
         </nav>
+        <div class="language-switch" role="group" aria-label="Idioma / Language">
+            <button type="button" lang="es" aria-pressed="true" data-language="es">ES</button>
+            <button type="button" lang="en" aria-pressed="false" data-language="en">EN</button>
+        </div>
     </header>
     <main>
-        <p class="eyebrow">Oaxaca · México</p>
-        <h1>Centro</h1>
-        <figure><img src="imagen/kiosko.jpeg" alt="Kiosco en el centro de San Miguel Tecomatlán" loading="lazy"><figcaption>Kiosco</figcaption></figure>
+        <p class="eyebrow" data-es="Oaxaca · México" data-en="Oaxaca · Mexico">Oaxaca · México</p>
+        <h1 data-es="Centro" data-en="Town center">Centro</h1>
+        <div class="intro-copy">
+            <h2 data-es="El corazón de nuestra comunidad" data-en="The heart of our community">El corazón de nuestra comunidad</h2>
+            <p data-es="El centro de San Miguel Tecomatlán es un espacio donde se encuentran la historia, la convivencia y la identidad de sus habitantes. Sus calles, espacios públicos y construcciones reflejan la esencia de un pueblo mixteco que conserva con orgullo sus tradiciones y costumbres." data-en="The center of San Miguel Tecomatlán is a place where history, community life, and local identity come together. Its streets, public spaces, and buildings reflect the character of a Mixtec town that proudly preserves its traditions and customs.">El centro de San Miguel Tecomatlán es un espacio donde se encuentran la historia, la convivencia y la identidad de sus habitantes. Sus calles, espacios públicos y construcciones reflejan la esencia de un pueblo mixteco que conserva con orgullo sus tradiciones y costumbres.</p>
+            <p data-es="Es aquí donde transcurre buena parte de la vida comunitaria, donde las familias se reúnen y donde las celebraciones y actividades fortalecen los lazos entre sus habitantes. Un lugar que invita a recorrer sus rincones y descubrir la tranquilidad y hospitalidad que caracterizan a esta comunidad oaxaqueña." data-en="Much of community life unfolds here: families gather, and celebrations and activities strengthen the bonds between residents. It is a place to wander through and discover the calm and hospitality that define this Oaxacan community.">Es aquí donde transcurre buena parte de la vida comunitaria, donde las familias se reúnen y donde las celebraciones y actividades fortalecen los lazos entre sus habitantes. Un lugar que invita a recorrer sus rincones y descubrir la tranquilidad y hospitalidad que caracterizan a esta comunidad oaxaqueña.</p>
+        </div>
+        <figure><img src="imagen/kiosko.jpeg" alt="Kiosco en el centro de San Miguel Tecomatlán" data-alt-es="Kiosco en el centro de San Miguel Tecomatlán" data-alt-en="Kiosk in the center of San Miguel Tecomatlán" loading="lazy"><figcaption data-es="Kiosco" data-en="Kiosk">Kiosco</figcaption></figure>
         <section id="parque" aria-labelledby="parque-title">
-            <h3 id="parque-title">Parque</h3>
+            <h3 id="parque-title" data-es="Parque" data-en="Park">Parque</h3>
             <div class="photo-grid">
-                <figure><img src="imagen/parque.jpeg" alt="Parque de San Miguel Tecomatlán" loading="lazy"><figcaption>Parque</figcaption></figure>
-                <figure><img src="imagen/fuente.jpeg" alt="Fuente del parque de San Miguel Tecomatlán" loading="lazy"><figcaption>Fuente</figcaption></figure>
+                <figure><img src="imagen/parque.jpeg" alt="Parque de San Miguel Tecomatlán" data-alt-es="Parque de San Miguel Tecomatlán" data-alt-en="Park in San Miguel Tecomatlán" loading="lazy"><figcaption data-es="Parque" data-en="Park">Parque</figcaption></figure>
+                <figure><img src="imagen/fuente.jpeg" alt="Fuente del parque de San Miguel Tecomatlán" data-alt-es="Fuente del parque de San Miguel Tecomatlán" data-alt-en="Fountain in the park of San Miguel Tecomatlán" loading="lazy"><figcaption data-es="Fuente" data-en="Fountain">Fuente</figcaption></figure>
             </div>
         </section>
         <section id="municipio" aria-labelledby="municipio-title">
-            <h3 id="municipio-title">Municipio</h3>
+            <h3 id="municipio-title" data-es="Municipio" data-en="Municipal building">Municipio</h3>
             <div class="photo-grid">
-                <figure><img src="imagen/municipio.jpeg" alt="Edificio municipal de San Miguel Tecomatlán" loading="lazy"><figcaption>Municipio</figcaption></figure>
-                <figure class="map-photo"><img src="imagen/mapa-limpio.jpeg" alt="Pintura del mapa de San Miguel Tecomatlán" loading="lazy"><figcaption>Mapa</figcaption></figure>
+                <figure><img src="imagen/municipio.jpeg" alt="Edificio municipal de San Miguel Tecomatlán" data-alt-es="Edificio municipal de San Miguel Tecomatlán" data-alt-en="Municipal building in San Miguel Tecomatlán" loading="lazy"><figcaption data-es="Municipio" data-en="Municipal building">Municipio</figcaption></figure>
+                <figure class="map-photo"><img src="imagen/mapa-limpio.jpeg" alt="Pintura del mapa de San Miguel Tecomatlán" data-alt-es="Pintura del mapa de San Miguel Tecomatlán" data-alt-en="Painted map of San Miguel Tecomatlán" loading="lazy"><figcaption data-es="Mapa" data-en="Map">Mapa</figcaption></figure>
             </div>
         </section>
         <section id="primaria" aria-labelledby="primaria-title">
-            <h3 id="primaria-title">Primaria</h3>
+            <h3 id="primaria-title" data-es="Primaria" data-en="Elementary school">Primaria</h3>
             <div class="photo-grid">
-                <figure><img src="imagen/mural.jpeg" alt="Mural de la escuela primaria de San Miguel Tecomatlán" loading="lazy"><figcaption>Primaria</figcaption></figure>
+                <figure><img src="imagen/mural.jpeg" alt="Mural de la escuela primaria de San Miguel Tecomatlán" data-alt-es="Mural de la escuela primaria de San Miguel Tecomatlán" data-alt-en="Elementary school mural in San Miguel Tecomatlán" loading="lazy"><figcaption data-es="Primaria" data-en="Elementary school">Primaria</figcaption></figure>
             </div>
         </section>
     </main>
-    <footer class="footer"><a href="Index.html">Volver a San Miguel Tecomatlán</a></footer>
+    <footer class="footer"><a href="index.html" data-es="Volver a San Miguel Tecomatlán" data-en="Back to San Miguel Tecomatlán">Volver a San Miguel Tecomatlán</a></footer>
+    <script>
+        const languageButtons = document.querySelectorAll("[data-language]");
+        const translatableElements = document.querySelectorAll("[data-es][data-en]");
+
+        function setLanguage(language) {
+            document.documentElement.lang = language;
+            document.title = language === "es" ? "Centro de San Miguel Tecomatlán" : "Center of San Miguel Tecomatlán";
+            translatableElements.forEach((element) => { element.textContent = element.dataset[language]; });
+            document.querySelectorAll("img[data-alt-es]").forEach((image) => { image.alt = image.dataset[`alt${language === "es" ? "Es" : "En"}`]; });
+            languageButtons.forEach((button) => { button.setAttribute("aria-pressed", String(button.dataset.language === language)); });
+        }
+
+        languageButtons.forEach((button) => { button.addEventListener("click", () => setLanguage(button.dataset.language)); });
+        const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
+        if (requestedLanguage === "en") setLanguage("en");
+    </script>
 </body>
 </html>

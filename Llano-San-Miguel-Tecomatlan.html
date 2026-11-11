@@ -20,54 +20,87 @@
         nav { display: flex; flex-wrap: wrap; gap: 22px; }
         nav a { color: #48554e; font-size: 11px; font-weight: 800; text-decoration: none; }
         nav a:hover { color: var(--clay); }
+        .language-switch { display: flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 99px; }
+        .language-switch button { min-width: 36px; min-height: 31px; padding: 0 8px; border: 0; border-radius: 99px; background: transparent; color: var(--muted); cursor: pointer; font: 700 10px var(--sans); }
+        .language-switch button[aria-pressed="true"] { background: var(--green-dark); color: white; }
         main { max-width: 1440px; margin: auto; }
         .intro { padding: clamp(52px, 8vw, 100px) clamp(22px, 9vw, 136px) 42px; }
         .eyebrow { margin: 0 0 12px; color: var(--clay); font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; }
         h1, h2, h3, p { margin-top: 0; }
         h1 { margin-bottom: 0; font: 400 clamp(42px, 7vw, 78px)/1.04 var(--serif); }
+        .intro-copy { max-width: 820px; margin-top: 22px; color: #526058; font-size: 15px; line-height: 1.9; }
+        .intro-copy h2 { margin: 0 0 14px; color: var(--green-dark); font: 400 clamp(25px, 3vw, 34px)/1.2 var(--serif); }
+        .intro-copy p { margin: 0 0 14px; }
         .section { padding: 38px clamp(22px, 9vw, 136px) 70px; }
         .section + .section { padding-top: 20px; }
         h2 { margin-bottom: 24px; color: var(--green-dark); font: 400 clamp(32px, 4vw, 48px)/1.1 var(--serif); }
         h3 { margin: 0 0 18px; color: var(--clay); font: 400 30px/1.1 var(--serif); }
         .photo-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-        figure { min-width: 0; margin: 0; background: #e9e4d8; }
+        figure { min-width: 0; overflow: hidden; margin: 0; background: #e9e4d8; }
         figure.wide { grid-column: 1 / -1; }
-        figure img { display: block; width: 100%; max-height: 610px; aspect-ratio: 4 / 3; object-fit: cover; }
+        figure img { display: block; width: 100%; max-height: 610px; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .45s ease; }
+        figure:hover img { transform: scale(1.025); }
         figure.wide img { aspect-ratio: 2.15 / 1; }
         figcaption { padding: 12px 15px; color: var(--muted); font-size: 11px; font-weight: 700; }
         .footer { padding: 22px clamp(20px, 6vw, 88px); background: var(--ink); color: #d9ded4; font-size: 10px; }
         .footer a { color: #f1c45a; }
-        @media (max-width: 650px) { .header { align-items: flex-start; flex-direction: column; gap: 9px; } nav { gap: 15px; } .photo-grid { grid-template-columns: 1fr; } figure.wide { grid-column: auto; } figure.wide img { aspect-ratio: 4 / 3; } .section { padding-bottom: 50px; } }
+        @media (max-width: 650px) { .header { align-items: flex-start; flex-direction: column; gap: 9px; } nav { gap: 15px; } .photo-grid { grid-template-columns: 1fr; } figure.wide { grid-column: auto; } figure.wide img { aspect-ratio: 4 / 3; } .section { padding-bottom: 50px; } .intro-copy { font-size: 14px; } }
         @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
     </style>
 </head>
 <body>
     <header class="header">
-        <a class="brand" href="Index.html">SAN MIGUEL TECOMATLÁN</a>
+        <a class="brand" href="index.html">SAN MIGUEL TECOMATLÁN</a>
         <nav aria-label="Secciones del llano">
-            <a href="#zonas-de-cultivo">Zonas de cultivo</a>
-            <a href="#abinos">Abinos</a>
+            <a href="#zonas-de-cultivo" data-es="Zonas de cultivo" data-en="Cultivation areas">Zonas de cultivo</a>
+            <a href="#abinos" data-es="Abinos" data-en="Abinos">Abinos</a>
         </nav>
+        <div class="language-switch" role="group" aria-label="Idioma / Language">
+            <button type="button" lang="es" aria-pressed="true" data-language="es">ES</button>
+            <button type="button" lang="en" aria-pressed="false" data-language="en">EN</button>
+        </div>
     </header>
     <main>
         <div class="intro">
-            <p class="eyebrow">Mixteca · Oaxaca</p>
-            <h1>Llano de San Miguel Tecomatlan</h1>
+            <p class="eyebrow" data-es="Mixteca · Oaxaca" data-en="Mixteca · Oaxaca">Mixteca · Oaxaca</p>
+            <h1 data-es="Llano de San Miguel Tecomatlán" data-en="San Miguel Tecomatlán Plain">Llano de San Miguel Tecomatlán</h1>
+            <div class="intro-copy">
+                <h2 data-es="La tierra que da vida a nuestra comunidad" data-en="The land that sustains our community">La tierra que da vida a nuestra comunidad</h2>
+                <p data-es="La actividad agrícola forma parte esencial de la vida en San Miguel Tecomatlán. Sus terrenos de cultivo representan el esfuerzo y la dedicación de las personas que trabajan la tierra, manteniendo una relación estrecha con el entorno natural y las tradiciones del campo." data-en="Agriculture is an essential part of life in San Miguel Tecomatlán. The fields represent the hard work and dedication of those who cultivate the land, sustaining a close relationship with the natural environment and rural traditions.">La actividad agrícola forma parte esencial de la vida en San Miguel Tecomatlán. Sus terrenos de cultivo representan el esfuerzo y la dedicación de las personas que trabajan la tierra, manteniendo una relación estrecha con el entorno natural y las tradiciones del campo.</p>
+                <p data-es="Entre sus principales actividades agrícolas destacan la producción de alfalfa y avena, cultivos que forman parte de la economía y las actividades productivas de la población." data-en="Alfalfa and oats are among the area's main crops, contributing to the local economy and livelihoods.">Entre sus principales actividades agrícolas destacan la producción de alfalfa y avena, cultivos que forman parte de la economía y las actividades productivas de la población.</p>
+                <p data-es="Los paisajes agrícolas permiten apreciar otra faceta de la comunidad: sus espacios abiertos, sus tierras de trabajo y la importancia del campo como parte de su identidad. Cada parcela representa el esfuerzo de generaciones que han encontrado en la tierra una forma de vida y sustento." data-en="The agricultural landscape reveals another side of the community: its open spaces, working fields, and the importance of farming to local identity. Each plot reflects generations of effort and the livelihood people have built from the land.">Los paisajes agrícolas permiten apreciar otra faceta de la comunidad: sus espacios abiertos, sus tierras de trabajo y la importancia del campo como parte de su identidad. Cada parcela representa el esfuerzo de generaciones que han encontrado en la tierra una forma de vida y sustento.</p>
+            </div>
         </div>
         <section class="section" id="zonas-de-cultivo" aria-labelledby="cultivo-title">
-            <h2 id="cultivo-title">Zonas de cultivo</h2>
+            <h2 id="cultivo-title" data-es="Zonas de cultivo" data-en="Cultivation areas">Zonas de cultivo</h2>
             <div class="photo-grid">
-                <figure class="wide"><img src="imagen/panoramica llano.jpeg" alt="Vista panorámica del llano y sus zonas de cultivo" loading="lazy"><figcaption>Zonas de cultivo</figcaption></figure>
+                <figure class="wide"><img src="imagen/panoramica llano.jpeg" alt="Vista panorámica del llano y sus zonas de cultivo" data-alt-es="Vista panorámica del llano y sus zonas de cultivo" data-alt-en="Panoramic view of the plain and its cultivated fields" loading="lazy"><figcaption data-es="Zonas de cultivo" data-en="Cultivation areas">Zonas de cultivo</figcaption></figure>
             </div>
         </section>
         <section class="section" id="abinos" aria-labelledby="abinos-title">
-            <h2 id="abinos-title">Abinos</h2>
+            <h2 id="abinos-title" data-es="Abinos" data-en="Abinos">Abinos</h2>
             <div class="photo-grid">
-                <figure><img src="imagen/abinos 1.jpeg" alt="Zona de cultivo de Abinos" loading="lazy"><figcaption>Zona de cultivo (Abinos)</figcaption></figure>
-                <figure><img src="imagen/abinos 2.jpeg" alt="Terrenos de cultivo en Abinos" loading="lazy"><figcaption>Abinos</figcaption></figure>
+                <figure><img src="imagen/abinos 1.jpeg" alt="Zona de cultivo de Abinos" data-alt-es="Zona de cultivo de Abinos" data-alt-en="Cultivated field in Abinos" loading="lazy"><figcaption data-es="Zona de cultivo (Abinos)" data-en="Cultivation area (Abinos)">Zona de cultivo (Abinos)</figcaption></figure>
+                <figure><img src="imagen/abinos 2.jpeg" alt="Terrenos de cultivo en Abinos" data-alt-es="Terrenos de cultivo en Abinos" data-alt-en="Farmland in Abinos" loading="lazy"><figcaption data-es="Abinos" data-en="Abinos">Abinos</figcaption></figure>
             </div>
         </section>
     </main>
-    <footer class="footer"><a href="Index.html">Volver a San Miguel Tecomatlán</a></footer>
+    <footer class="footer"><a href="index.html" data-es="Volver a San Miguel Tecomatlán" data-en="Back to San Miguel Tecomatlán">Volver a San Miguel Tecomatlán</a></footer>
+    <script>
+        const languageButtons = document.querySelectorAll("[data-language]");
+        const translatableElements = document.querySelectorAll("[data-es][data-en]");
+
+        function setLanguage(language) {
+            document.documentElement.lang = language;
+            document.title = language === "es" ? "Llano de San Miguel Tecomatlán" : "San Miguel Tecomatlán Plain";
+            translatableElements.forEach((element) => { element.textContent = element.dataset[language]; });
+            document.querySelectorAll("img[data-alt-es]").forEach((image) => { image.alt = image.dataset[`alt${language === "es" ? "Es" : "En"}`]; });
+            languageButtons.forEach((button) => { button.setAttribute("aria-pressed", String(button.dataset.language === language)); });
+        }
+
+        languageButtons.forEach((button) => { button.addEventListener("click", () => setLanguage(button.dataset.language)); });
+        const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
+        if (requestedLanguage === "en") setLanguage("en");
+    </script>
 </body>
 </html>
