@@ -36,6 +36,19 @@
         img { display: block; width: 100%; max-height: 680px; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .45s ease; }
         figure:hover img { transform: scale(1.025); }
         .map-photo img { max-height: 520px; aspect-ratio: 16 / 10; object-fit: contain; object-position: center; background: #e9e4d8; }
+        .map-caption { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .map-open, .map-controls button { min-height: 36px; padding: 7px 12px; border: 1px solid var(--line); background: white; color: var(--green-dark); cursor: pointer; font: 700 11px var(--sans); }
+        .map-open:hover, .map-controls button:hover { border-color: var(--green-dark); background: #f4f0e6; }
+        .map-dialog { width: min(960px, calc(100vw - 28px)); max-width: none; max-height: calc(100vh - 28px); padding: 0; border: 0; background: var(--paper); color: var(--ink); box-shadow: 0 18px 70px rgb(0 0 0 / 35%); }
+        .map-dialog::backdrop { background: rgb(18 28 24 / 78%); }
+        .map-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+        .map-dialog-header h2 { margin: 0; color: var(--green-dark); font: 400 24px/1.2 var(--serif); }
+        .map-controls { display: flex; align-items: center; gap: 6px; }
+        .map-controls button { min-width: 38px; padding: 6px 9px; }
+        .map-controls .map-close { min-width: 36px; font-size: 19px; }
+        .map-zoom-level { min-width: 42px; color: var(--muted); font-size: 11px; text-align: center; }
+        .map-dialog-viewport { max-height: calc(100vh - 100px); overflow: auto; overscroll-behavior: contain; background: #e9e4d8; }
+        .map-dialog-viewport img { width: 100%; max-width: none; max-height: none; height: auto; aspect-ratio: auto; object-fit: contain; }
         .mural-photo { overflow-x: auto; overflow-y: hidden; }
         .mural-photo img { width: auto; max-width: none; height: 420px; max-height: none; aspect-ratio: auto; object-fit: contain; }
         figcaption { padding: 12px 15px; color: var(--muted); font-size: 11px; font-weight: 700; }
@@ -83,9 +96,22 @@
             </div>
             <div class="photo-grid">
                 <figure><img src="imagen/municipio.jpeg" alt="Edificio municipal de San Miguel Tecomatlán" data-alt-es="Edificio municipal de San Miguel Tecomatlán" data-alt-en="Municipal building in San Miguel Tecomatlán" loading="lazy"><figcaption data-es="Municipio" data-en="Municipal building">Municipio</figcaption></figure>
-                <figure class="map-photo"><img src="imagen/mapa-limpio.jpeg" alt="Pintura del mapa de San Miguel Tecomatlán" data-alt-es="Pintura del mapa de San Miguel Tecomatlán" data-alt-en="Painted map of San Miguel Tecomatlán" loading="lazy"><figcaption data-es="Mapa" data-en="Map">Mapa</figcaption></figure>
+                <figure class="map-photo"><img src="imagen/mapa-limpio.jpeg" alt="Pintura del mapa de San Miguel Tecomatlán" data-alt-es="Pintura del mapa de San Miguel Tecomatlán" data-alt-en="Painted map of San Miguel Tecomatlán" loading="lazy"><figcaption class="map-caption"><span data-es="Mapa" data-en="Map">Mapa</span><button class="map-open" type="button" data-es="Ampliar mapa" data-en="Explore map" aria-haspopup="dialog">Ampliar mapa</button></figcaption></figure>
             </div>
         </section>
+        <dialog class="map-dialog" id="map-dialog" aria-labelledby="map-dialog-title">
+            <div class="map-dialog-header">
+                <h2 id="map-dialog-title" data-es="Mapa de San Miguel Tecomatlán" data-en="Map of San Miguel Tecomatlán">Mapa de San Miguel Tecomatlán</h2>
+                <div class="map-controls" role="group" aria-label="Controles del mapa" data-label-es="Controles del mapa" data-label-en="Map controls">
+                    <button type="button" class="map-zoom-out" aria-label="Reducir zoom" title="Reducir zoom" data-label-es="Reducir zoom" data-label-en="Zoom out">−</button>
+                    <output class="map-zoom-level" aria-live="polite">100%</output>
+                    <button type="button" class="map-zoom-in" aria-label="Aumentar zoom" title="Aumentar zoom" data-label-es="Aumentar zoom" data-label-en="Zoom in">+</button>
+                    <button type="button" class="map-reset" data-es="Restablecer" data-en="Reset">Restablecer</button>
+                    <button type="button" class="map-close" data-es="×" data-en="×" aria-label="Cerrar mapa" title="Cerrar mapa" data-label-es="Cerrar mapa" data-label-en="Close map">×</button>
+                </div>
+            </div>
+            <div class="map-dialog-viewport"><img src="imagen/mapa-limpio.jpeg" alt="Mapa ampliado de San Miguel Tecomatlán" data-alt-es="Mapa ampliado de San Miguel Tecomatlán" data-alt-en="Enlarged map of San Miguel Tecomatlán"></div>
+        </dialog>
         <section id="primaria" aria-labelledby="primaria-title">
             <h3 id="primaria-title" data-es="Primaria" data-en="Elementary school">Primaria</h3>
             <div class="section-copy">
@@ -107,6 +133,11 @@
             document.documentElement.lang = language;
             document.title = language === "es" ? "Centro de San Miguel Tecomatlán" : "Center of San Miguel Tecomatlán";
             translatableElements.forEach((element) => { element.textContent = element.dataset[language]; });
+            document.querySelectorAll("[data-label-es][data-label-en]").forEach((element) => {
+                const label = element.dataset[`label${language === "es" ? "Es" : "En"}`];
+                element.setAttribute("aria-label", label);
+                element.title = label;
+            });
             document.querySelectorAll("img[data-alt-es]").forEach((image) => { image.alt = image.dataset[`alt${language === "es" ? "Es" : "En"}`]; });
             languageButtons.forEach((button) => { button.setAttribute("aria-pressed", String(button.dataset.language === language)); });
         }
@@ -114,6 +145,36 @@
         languageButtons.forEach((button) => { button.addEventListener("click", () => setLanguage(button.dataset.language)); });
         const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
         if (requestedLanguage === "en") setLanguage("en");
+
+        const mapDialog = document.querySelector("#map-dialog");
+        const mapDialogImage = mapDialog.querySelector(".map-dialog-viewport img");
+        const mapZoomLevel = mapDialog.querySelector(".map-zoom-level");
+        let mapZoom = 1;
+
+        function setMapZoom(zoom) {
+            mapZoom = Math.min(4, Math.max(1, zoom));
+            mapDialogImage.style.width = `${mapZoom * 100}%`;
+            mapZoomLevel.value = `${Math.round(mapZoom * 100)}%`;
+            mapZoomLevel.textContent = mapZoomLevel.value;
+        }
+
+        document.querySelector(".map-open").addEventListener("click", () => {
+            setMapZoom(1);
+            mapDialog.showModal();
+        });
+        mapDialog.querySelector(".map-zoom-in").addEventListener("click", () => setMapZoom(mapZoom + 0.25));
+        mapDialog.querySelector(".map-zoom-out").addEventListener("click", () => setMapZoom(mapZoom - 0.25));
+        mapDialog.querySelector(".map-reset").addEventListener("click", () => setMapZoom(1));
+        mapDialog.querySelector(".map-close").addEventListener("click", () => mapDialog.close());
+        mapDialog.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                event.preventDefault();
+                mapDialog.close();
+            }
+        });
+        mapDialog.addEventListener("click", (event) => {
+            if (event.target === mapDialog) mapDialog.close();
+        });
     </script>
 </body>
 </html>
